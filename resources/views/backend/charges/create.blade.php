@@ -57,11 +57,19 @@
                                     <tr>
                                         <td colspan="4">
                                             <div class="form-group">
+                                                <label for="discount_rate">Discount:</label>
+                                                <input type="text" class="form-control" name="discount_rate"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="form-group">
                                                 <label for="sending_rate">Charging Rate:</label>
                                                 <input type="text" class="form-control" name="sending_rate"/>
                                             </div>
                                             <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" type="checkbox" id="status" value="option1">
+                                                <input class="custom-control-input" type="checkbox" id="status" value="1" {{ old('status') ? 'checked="checked"' : '' }} name="status">
                                                 <label for="status" class="custom-control-label">Fixed Charge</label>
                                             </div>
                                         </td>

@@ -32,6 +32,8 @@
                                 <th>Description</th>
                                 <th>Available</th>
                                 <th>Sell rate</th>
+                                <th>B.rate</th>
+                                <th>S.rate</th>
                                 <th>Receive Fund</th>
                                 <th colspan = 2 style="width: 20%">Action</th>
                             </tr>
@@ -45,6 +47,8 @@
                                     <td>{{str_limit($fund->description,'30')}}</td>
                                     <td>{{$fund->available}}</td>
                                     <td>{{$fund->buy}}</td>
+                                    <td>{{$fund->buyrate}}</td>
+                                    <td>{{$fund->sellrate}}</td>
                                     <td>{{$fund->receive}}</td>
                                     <td><a href="{{ route('fund.edit', $fund->id)}}" class="btn btn-primary"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
                                     <td><form action="{{ route('fund.destroy', $fund->id)}}" method="post">

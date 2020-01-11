@@ -31,6 +31,7 @@
                                     <th>Amount To</th>
                                     <th>Amount From</th>
                                     <th>Charging Rate</th>
+                                    <th>Discount</th>
                                     <th colspan = 2>Action</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                         <td>{{$charge->amount_to}}</td>
                                         <td>{{$charge->amount_from}}</td>
                                         <td>{{$charge->sending_rate}}</td>
+                                        <td>{{$charge->discount_rate}}</td>
                                         <td>
                                             <a href="{{ route('charge.edit', $charge->id)}}" class="btn btn-primary"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                         </td>

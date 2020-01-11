@@ -12,16 +12,8 @@
 */
 
 Route::get('/', function () {
-    $funds = [
-        'title',
-        'image',
-        'description',
-        'available',
-        'buy',
-        'sell',
-        ];
-
-    return view('frontend.exchangePage.exchange');
+    $funds = DB::table('funds')->get();
+    return view('frontend.exchangePage.exchange',['funds'=>$funds]);
 });
 Route::get('/about', function () {
     return view('frontend.aboutUs.about');

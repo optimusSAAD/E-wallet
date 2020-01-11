@@ -56,6 +56,8 @@ class FundController extends Controller
             'description'=>$request->description,
             'available'=>$request->available,
             'buy'=>$request->buy,
+            'buyrate'=>$request->buyrate,
+            'sellrate'=>$request->sellrate,
             'receive'=>implode(',', (array)($request->receive)),
         );
 
@@ -72,7 +74,8 @@ class FundController extends Controller
      */
     public function show(Fund $fund)
     {
-        //
+        $funds = Fund::paginate(10);
+        return view('frontend.exchangePage.exchange',compact('fund','funds'));
     }
 
     /**
@@ -83,7 +86,8 @@ class FundController extends Controller
      */
     public function edit(Fund $fund)
     {
-        return view('backend.funds.edit', compact('fund'));
+        $funds = Fund::all();
+        return view('backend.funds.edit', compact('fund','funds'));
     }
 
     /**
@@ -103,7 +107,7 @@ class FundController extends Controller
                 'title'    =>  'required',
                 'image'         =>  'image|max:2048',
                 'buy'     =>  'required',
-                'sell'     =>  'required',
+                'receive',
             ]);
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -113,9 +117,8 @@ class FundController extends Controller
         {
             $request->validate([
                 'title'    =>  'required',
-
                 'buy'     =>  'required',
-                'sell'     =>  'required',
+                'receive',
             ]);
         }
 
@@ -124,7 +127,7 @@ class FundController extends Controller
             'image'=>$image_name,
             'description'=>$request->description,
             'buy'=>$request->buy,
-            'sell'=>$request->sell,
+            'receive'=>implode(',',(array)($request->receive)),
         );
 
 

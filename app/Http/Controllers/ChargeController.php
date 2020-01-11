@@ -44,7 +44,8 @@ class ChargeController extends Controller
         $charge->amount_to = $request->amount_to;
         $charge->amount_from = $request->amount_from;
         $charge->sending_rate = $request->sending_rate;
-        $charge->status = $request->status;
+        $charge->discount_rate = $request->discount_rate;
+        $charge->status = $request->has('status');
         $charge->funds()->associate($fund)->save();
         $charge->save();
 
@@ -87,8 +88,10 @@ class ChargeController extends Controller
             'amount_to'=>'required',
             'amount_from'=>'required',
             'sending_rate'=>'required',
-            'receiving_rate'=>'required',
+            'discount_rate'=>'required',
+            'status',
         ]);
+        $charge->status = $request->has('status');
 
         $charge->update($request->all());
 

@@ -17,34 +17,12 @@
                                 </strong>
                             </div>
                             <div class="listings-grid_item">
-                                <div class="group" id="list-group-1">
+                                <div class="group" id="list-group-1" style="{{--height: 200px; overflow: auto;--}}">
+                                    @foreach($funds as $fund)
                                     <a href="javascript:void(0);" onclick="switchVisible();" class="list-group-item">
-                                        <img src="img/icon/bkash.png" width="32px" height="32px"> Bkash Personal BDT
+                                        <img src="{{ URL::to('/') }}/funds/{{ $fund->image }}" width="32px" height="32px"> {{$fund->title}}
                                     </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible1();" class="list-group-item">
-                                        <img src="img/icon/rocket.png" width="32px" height="32px"> Rocket Personal BDT
-                                    </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible2();" class="list-group-item">
-                                        <img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD
-                                    </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible3();" class="list-group-item">
-                                        <img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD
-                                    </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible4();"   class="list-group-item">
-                                        <img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD
-                                    </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible5();" class="list-group-item">
-                                        <img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD
-                                    </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible6();" class="list-group-item">
-                                        <img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD
-                                    </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible7();" class="list-group-item">
-                                        <img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD
-                                    </a>
-                                    <a href="javascript:void(0);" onclick="switchVisible9();" class="list-group-item">
-                                        <img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD
-                                    </a>
+                                        @endforeach
                                 </div>
                             </div>
                         </div>
@@ -75,48 +53,50 @@
                             <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;">
                                 <strong>Receive</strong>
                             </div>
-                            <a href="/multi" class="list-group-item">
-                                <img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD
-                                <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
-                                            <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
-                                        </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD
-                                <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
-                                            <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
-                                        </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD
-                                <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
-                                            <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
-                                        </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD
-                                <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
-                                            <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
-                                        </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD
-                                <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
-                                            <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
-                                        </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD
-                                <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
-                                            <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
-                                        </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD
-                                <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
-                                            <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
-                                        </span>
-                            </a>
+                            <div class="" style="{{--height: 200px; overflow: auto;--}}">
+                                <a href="/multi" class="list-group-item">
+                                    <img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD
+                                    <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
+                                        <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD
+                                    <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
+                                        <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD
+                                    <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
+                                        <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD
+                                    <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
+                                        <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD
+                                    <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
+                                        <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD
+                                    <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
+                                        <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD
+                                    <span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;">
+                                        <small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-6 col-lg-6" id="div3" style="display: none">
                             <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;">
@@ -147,212 +127,45 @@
                             <a href="#" class="list-group-item"><img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
                             <a href="#" class="list-group-item"><img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
                         </div>
-                        <div class="col-md-6 col-lg-6" id="div5" style="display: none">
-                            <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;"><strong>Receive</strong></div>
-                            <a href="javascript:void(0);" onclick="bit_load_receive_list('16');" class="list-group-item"><img src="img/icon/bkash.png" width="32px" height="32px"> Bkash Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/rocket.png" width="32px" height="32px"> Rocket Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-
-                            <a href="#" class="list-group-item"><img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                        </div>
-                        <div class="col-md-6 col-lg-6" id="div6" style="display: none">
-                            <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;"><strong>Receive</strong></div>
-                            <a href="javascript:void(0);" onclick="bit_load_receive_list('16');" class="list-group-item"><img src="img/icon/bkash.png" width="32px" height="32px"> Bkash Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/rocket.png" width="32px" height="32px"> Rocket Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-
-                            <a href="#" class="list-group-item"><img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                        </div>
-                        <div class="col-md-6 col-lg-6" id="div7" style="display: none">
-                            <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;"><strong>Receive</strong></div>
-                            <a href="javascript:void(0);" onclick="bit_load_receive_list('16');" class="list-group-item"><img src="img/icon/bkash.png" width="32px" height="32px"> Bkash Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/rocket.png" width="32px" height="32px"> Rocket Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-
-                            <a href="#" class="list-group-item"><img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                        </div>
-                        <div class="col-md-6 col-lg-6" id="div8" style="display: none">
-                            <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;"><strong>Receive</strong></div>
-                            <a href="javascript:void(0);" onclick="bit_load_receive_list('16');" class="list-group-item"><img src="img/icon/bkash.png" width="32px" height="32px"> Bkash Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/rocket.png" width="32px" height="32px"> Rocket Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-
-                            <a href="#" class="list-group-item"><img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                        </div>
-                        <div class="col-md-6 col-lg-6" id="div9" style="display: none">
-                            <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;"><strong>Receive</strong></div>
-                            <a href="javascript:void(0);" onclick="bit_load_receive_list('16');" class="list-group-item"><img src="img/icon/bkash.png" width="32px" height="32px"> Bkash Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/rocket.png" width="32px" height="32px"> Rocket Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-
-                            <a href="#" class="list-group-item"><img src="img/icon/cb.png" width="32px" height="32px"> Coinbase BTC USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                        </div>
-                        <div class="col-md-6 col-lg-6" id="div10" style="display: none">
-                            <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;"><strong>Receive</strong></div>
-                            <a href="javascript:void(0);" onclick="bit_load_receive_list('16');" class="list-group-item"><img src="img/icon/bkash.png" width="32px" height="32px"> Bkash Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/rocket.png" width="32px" height="32px"> Rocket Personal BDT<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/skrill.png" width="32px" height="32px"> Skrill USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/neteller.png" width="32px" height="32px"> Neteller USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/pm.png" width="32px" height="32px"> Perfect Money USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/wm.png" width="32px" height="32px"> WebMoney USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/paypal.png" width="32px" height="32px"> PayPal USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-                            <a href="#" class="list-group-item"><img src="img/icon/payoneer.png" width="32px" height="32px"> Payoneer USD<span class="pull-right text text-muted hidden-xs hidden-sm" style="font-size:11px;"><small>Reserve: 1170580 BDT<br>Exchange rate: 1 BDT = 0.98 BDT</small></span></a>
-
-                        </div>
-                        <div class="col-md-3 col-lg-3">
+                        <div class="col-md-3 col-lg-3" >
                             <div class="btn btn" style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;">
                                 <strong>Reserve Now</strong>
                             </div>
-                            <div class="listings-grid__item" style="background: white;">
+
+                            <div class="listings-grid__item" style="background: white; {{--height: 200px; overflow: auto;--}}">
+                                @foreach($funds as $fund)
                                 <br>
                                 <div class="col-md-12" style="margin-bottom:8px;">
-                                    <img src="img/icon/bkash.png" width="32px" height="32px">
+                                    <img src="{{ URL::to('/') }}/funds/{{ $fund->image }}" width="32px" height="32px">
                                     <span class="text" style="margin-left:5px; color: black; font-size: 16px; font-family: Arial;">
-                                            <strong> Bkash Personal </strong>
+                                            <strong> {{$fund->title}} </strong>
                                         </span>
-                                    <strong>
                                         <br>
-                                        <span class="label label-success" style="margin-left:40px;  background: #3949AB; color: #f2f2f2; font-size: 14px; font-family: Arial">
+                                        <span class="label label-success" style="margin-left:40px;  color: #288671; font-size: 14px; font-family: Arial,serif">
                                             <strong>
-                                            1170580
+                                                Available Funds: {{$fund->available}}
                                             </strong>
-                                        </span> BDT
-                                    </strong>
-                                    <h6>
-                                        Buying rate: 1 BDT = 1BDT
-                                        <br>
-                                        Selling rate: 1BDT = 1BDT
-                                    </h6>
-                                </div>
-                                <hr>
-                                <div class="col-md-12" style="margin-bottom:8px;">
-                                    <img src="img/icon/rocket.png" width="32px" height="32px">
-                                    <span class="text" style="margin-left:5px; color: black; font-size: 16px; font-family: Arial;">
+                                            <br>
                                             <strong>
-                                            Rocket Personal
+                                                Buying rate: {{$fund->buyrate}}
+                                            </strong>
+                                            <br>
+                                            <strong>
+                                                Selling rate: {{$fund->sellrate}}
                                             </strong>
                                         </span>
-                                    <strong>
-                                        <br>
-                                        <span class="label label-success" style="margin-left:40px;  background: #3949AB; color: #f2f2f2; font-size: 14px; font-family: Arial">
-                                            <strong>
-                                            1171542
-                                            </strong>
-                                        </span> BDT
-                                    </strong>
-                                    <h6>
-                                        Buying rate: 1 BDT = 1BDT
-                                        <br>
-                                        Selling rate: 1BDT = 1BDT
-                                    </h6>
                                 </div>
-                                <hr>
-                                <div class="col-md-12" style="margin-bottom:8px;"><img src="img/icon/skrill.png" width="32px" height="32px">
-                                    <span class="text" style="margin-left:5px; color: black; font-size: 16px; font-family: Arial;">
-                                            <strong>
-                                            Skrill
-                                            </strong>
-                                        </span>
-                                    <strong>
-                                        <br>
-                                        <span class="label label-success" style="margin-left:40px;  background: #3949AB; color: #f2f2f2; font-size: 14px; font-family: Arial">
-                                            <strong>
-                                            5465.02
-                                            </strong>
-                                        </span> USD
-                                    </strong>
+                                    <hr>
+                                @endforeach
+
                                 </div>
-                                <div class="col-md-12" style="margin-bottom:8px;">
-                                    <img src="img/icon/wm.png" width="32px" height="32px">
-                                    <span class="text" style="margin-left:5px; color: black; font-size: 16px; font-family: Arial;">
-                                            <strong>
-                                            WebMoney
-                                            </strong>
-                                        </span>
-                                    <strong>
-                                        <br>
-                                        <span class="label label-success" style="margin-left:40px;  background: #3949AB; color: #f2f2f2; font-size: 14px; font-family: Arial">
-                                            <strong>
-                                            3307.06
-                                            </strong>
-                                        </span> USD
-                                    </strong>
-                                </div>
-                                <div class="col-md-12" style="margin-bottom:8px;">
-                                    <img src="img/icon/paypal.png" width="32px" height="32px">
-                                    <span class="text" style="margin-left:5px; color: black; font-size: 16px; font-family: Arial;">
-                                            <strong>
-                                            PayPal
-                                            </strong>
-                                        </span>
-                                    <strong>
-                                        <br>
-                                        <span class="label label-success" style="margin-left:40px;  background: #3949AB; color: #f2f2f2; font-size: 14px; font-family: Arial">
-                                                <strong>
-                                                    3285.53
-                                                </strong>
-                                                </span> USD
-                                    </strong>
-                                </div>
-                                <div class="col-md-12" style="margin-bottom:8px;">
-                                    <img src="img/icon/payoneer.png" width="32px" height="32px">
-                                    <span class="text" style="margin-left:5px; color: black; font-size: 16px; font-family: Arial;">.
-                                            <strong>
-                                            Payoneer
-                                            </strong>
-                                        </span>
-                                    <strong>
-                                        <br>
-                                        <span class="label label-success" style="margin-left:40px;  background: #3949AB; color: #f2f2f2; font-size: 14px; font-family: Arial">
-                                            <strong>
-                                            2846
-                                            </strong>
-                                        </span> USD
-                                    </strong>
-                                </div>
-                                <div class="col-md-12" style="margin-bottom:8px;">
-                                    <img src="img/icon/cb.png" width="32px" height="32px">
-                                    <span class="text" style="margin-left:5px; color: black; font-size: 16px; font-family: Arial;">
-                                            <strong>
-                                            Coinbase BTC
-                                            </strong>
-                                        </span>
-                                    <strong>
-                                        <br>
-                                        <span class="label label-success" style="margin-left:40px;  background: #3949AB; color: #f2f2f2; font-size: 14px; font-family: Arial">
-                                            <strong>
-                                            4482.12
-                                            </strong>
-                                        </span> USD
-                                    </strong>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Hero Social Btn -->
 </section>
 <section class="dorne-about-area section-padding-0-100">
@@ -934,169 +747,7 @@
                 }
             }}
     </script>
-    <script type="text/javascript">
-        function switchVisible2() {
-            if (document.getElementById('div1')) {
-                if (document.getElementById('div1').style.display == 'none') {
-                    document.getElementById('div1').style.display = 'block';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-                else {
-                    document.getElementById('div1').style.display = 'none';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'block';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-            }}
-    </script>
-    <script type="text/javascript">
-        function switchVisible3() {
-            if (document.getElementById('div1')) {
-                if (document.getElementById('div1').style.display == 'none') {
-                    document.getElementById('div1').style.display = 'block';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-                else {
-                    document.getElementById('div1').style.display = 'none';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'block';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-            }}
-    </script>
-    <script type="text/javascript">
-        function switchVisible4() {
-            if (document.getElementById('div1')) {
-                if (document.getElementById('div1').style.display == 'none') {
-                    document.getElementById('div1').style.display = 'block';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-                else {
-                    document.getElementById('div1').style.display = 'none';
-                    document.getElementById('div6').style.display = 'block';
-                }
-            }}
-    </script>
-    <script type="text/javascript">
-        function switchVisible5() {
-            if (document.getElementById('div1')) {
-                if (document.getElementById('div1').style.display == 'none') {
-                    document.getElementById('div1').style.display = 'block';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-                else {
-                    document.getElementById('div1').style.display = 'none';
-                    document.getElementById('div7').style.display = 'block';
-                }
-            }}
-    </script>
-    <script type="text/javascript">
-        function switchVisible6() {
-            if (document.getElementById('div1')) {
-                if (document.getElementById('div1').style.display == 'none') {
-                    document.getElementById('div1').style.display = 'block';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-                else {
-                    document.getElementById('div1').style.display = 'none';
-                    document.getElementById('div8').style.display = 'block';
-                }}
-        }
-    </script>
-    <script type="text/javascript">
-        function switchVisible7() {
-            if (document.getElementById('div1')) {
-                if (document.getElementById('div1').style.display == 'none') {
-                    document.getElementById('div1').style.display = 'block';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-                else {
-                    document.getElementById('div1').style.display = 'none';
-                    document.getElementById('div9').style.display = 'block';
-                }}
-        }
-    </script>
-    <script type="text/javascript">
-        function switchVisible9() {
-            if (document.getElementById('div1')) {
-                if (document.getElementById('div1').style.display == 'none') {
-                    document.getElementById('div1').style.display = 'block';
-                    document.getElementById('div2').style.display = 'none';
-                    document.getElementById('div3').style.display = 'none';
-                    document.getElementById('div4').style.display = 'none';
-                    document.getElementById('div5').style.display = 'none';
-                    document.getElementById('div6').style.display = 'none';
-                    document.getElementById('div7').style.display = 'none';
-                    document.getElementById('div8').style.display = 'none';
-                    document.getElementById('div9').style.display = 'none';
-                    document.getElementById('div10').style.display = 'none';
-                }
-                else {
-                    document.getElementById('div1').style.display = 'none';
-                    document.getElementById('div10').style.display = 'block';
-                }}
-        }
-    </script>
+
 @endpush
 @push('css')
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">

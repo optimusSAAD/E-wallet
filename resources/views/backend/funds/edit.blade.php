@@ -35,7 +35,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Icon </td>
+                                        <td><label for="title">Icon:</label> </td>
                                         <td colspan="4">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="image" name="image">
@@ -58,19 +58,9 @@
                                     <tr>
                                         <td colspan="4">
                                             <div class="form-group">
-                                                <label for="buy">We Buy:</label>
+                                                <label for="buy">Sell Rate:</label>
                                                 <label>
                                                     <input type="text" class="form-control" name="buy" value={{ $fund->buy }} />
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">
-                                            <div class="form-group">
-                                                <label for="sell">We Sell:</label>
-                                                <label>
-                                                    <input type="text" class="form-control" name="sell" value={{ $fund->sell }} />
                                                 </label>
                                             </div>
                                         </td>
@@ -79,6 +69,45 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="form-group">
+                                            <label for="available">Available:</label>
+                                            <input type="text" class="form-control" value={{ $fund->available }} name="available"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="form-group">
+                                            <label for="buyrate">Buy Rate:</label>
+                                            <input type="text" class="form-control" value={{ $fund->buyrate }} name="buyrate"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="form-group">
+                                            <label for="sellrate">Sell Rate:</label>
+                                            <input type="text" class="form-control" value={{ $fund->sellrate }} name="sellrate"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <label for="receive[]">Receive Funds:</label>
+                        @foreach($funds as $fund)
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="receive[]" id="{{$fund->id}}" value="{{$fund->id}}">
+                                <label for="{{$fund->id}}" name="receive[]" class="custom-control-label">{{$fund->title}}</label>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div style="text-align: center;">

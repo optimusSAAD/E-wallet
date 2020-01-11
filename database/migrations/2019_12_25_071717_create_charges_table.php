@@ -23,6 +23,7 @@ class CreateChargesTable extends Migration
             $table->float('amount_to',10 ,3);
             $table->float('amount_from',10 ,3);
             $table->float('sending_rate',10,3);
+            $table->float('discount_rate',10,3)->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

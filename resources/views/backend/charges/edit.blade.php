@@ -43,16 +43,20 @@
                                     <tr>
                                         <td colspan="4">
                                             <div class="form-group">
-                                                <label for="sending_rate">Sending Rate:</label>
-                                                <input type="text" class="form-control" name="sending_rate" value="{{ $charge->sending_rate }}" />
+                                                <label for="discount_rate">Discount:</label>
+                                                <input type="text" class="form-control" name="discount_rate" value="{{ $charge->discount_rate }}" />
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4">
                                             <div class="form-group">
-                                                <label for="receiving_rate">Receiving Rate:</label>
-                                                <input type="text" class="form-control" name="receiving_rate" value="{{ $charge->receiving_rate }}" />
+                                                <label for="sending_rate">Sending Rate:</label>
+                                                <input type="text" class="form-control" name="sending_rate" value="{{ $charge->sending_rate }}" />
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="status" value="1" {{ old('status') ? 'checked="checked"' : '' }} name="status">
+                                                    <label for="status" class="custom-control-label">Fixed Charge</label>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

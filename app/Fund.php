@@ -20,10 +20,9 @@ protected $guarded=[];
     {
         return $this->hasMany(Charge::class);
     }
-
-    public function afunds()
+    public function getFacingsAttribute()
     {
-        return $this->belongsTo(Afund::class);
+        return explode(',', $this->facings);
     }
 
 }

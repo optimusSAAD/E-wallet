@@ -11,6 +11,7 @@ class Charge extends Model
         'amount_from',
         'sending_rate',
         'receiving_rate',
+        'discount_rate',
         'status',
     ];
     public function funds()

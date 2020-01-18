@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Afund;
 use App\Fund;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -45,6 +44,7 @@ class FundController extends Controller
             'description',
             'available'=>'required',
             'buy'=>'required',
+            'account',
             'receive',
         ]);
         $image = $request->file('image');
@@ -58,6 +58,7 @@ class FundController extends Controller
             'buy'=>$request->buy,
             'buyrate'=>$request->buyrate,
             'sellrate'=>$request->sellrate,
+            'account'=>$request->account,
             'receive'=>implode(',', (array)($request->receive)),
         );
 
@@ -74,8 +75,7 @@ class FundController extends Controller
      */
     public function show(Fund $fund)
     {
-        $funds = Fund::paginate(10);
-        return view('frontend.exchangePage.exchange',compact('fund','funds'));
+
     }
 
     /**
@@ -107,6 +107,7 @@ class FundController extends Controller
                 'title'    =>  'required',
                 'image'         =>  'image|max:2048',
                 'buy'     =>  'required',
+                'account',
                 'receive',
             ]);
 
@@ -118,18 +119,18 @@ class FundController extends Controller
             $request->validate([
                 'title'    =>  'required',
                 'buy'     =>  'required',
+                'account',
                 'receive',
             ]);
         }
-
         $form_data = array(
             'title'=>$request->title,
             'image'=>$image_name,
             'description'=>$request->description,
             'buy'=>$request->buy,
-            'receive'=>implode(',',(array)($request->receive)),
+            'account'=>$request->account,
+            'receive'=>implode(',', (array)($request->receive)),
         );
-
 
         $fund->update($form_data);
 
@@ -147,5 +148,11 @@ class FundController extends Controller
     {
         $fund->delete();
         return redirect('/admin/fund');
+    }
+
+    public function getRequest()
+    {
+        $funds = Fund::all();
+        return \response($funds);
     }
 }

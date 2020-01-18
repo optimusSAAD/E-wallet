@@ -18,7 +18,7 @@
     <div class="wizard-v3-content">
         <div class="wizard-form">
             <div class="wizard-header">
-                <h3 class="heading">Exchange Bkash Personal BDT to Skrill USD</h3>
+                <h3 class="heading">Exchange Bkash Personal BDT with Skrill USD</h3>
             </div>
             <form class="form-register" action="#" method="post">
                 <div id="form-total">

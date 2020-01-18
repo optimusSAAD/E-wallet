@@ -4,6 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Fund
+ * @package App
+ *
+ * @property string $image
+ * @property string $image_url
+ *
+ */
 class Fund extends Model
 {
 //    protected $fillable = [
@@ -14,15 +22,15 @@ class Fund extends Model
 //        'buy',
 //        'sell',
 //    ];
-protected $guarded=[];
+    protected $guarded = [];
 
     public function charges()
     {
         return $this->hasMany(Charge::class);
     }
-    public function getFacingsAttribute()
-    {
-        return explode(',', $this->facings);
-    }
 
+    public function getImageUrlAttribute()
+    {
+        return url('funds/' . $this->image);
+    }
 }

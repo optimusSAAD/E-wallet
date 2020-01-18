@@ -58,6 +58,14 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="form-group">
+                                                <label for="account">Receiving Address:</label>
+                                                <input type="text" class="form-control" name="account"/>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -91,6 +99,7 @@
                                             </div>
                                         </td>
                                     </tr>
+
                                 </tbody>
                             </table>
                         </div>

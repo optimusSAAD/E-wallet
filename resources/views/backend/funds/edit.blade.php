@@ -29,7 +29,7 @@
                                             <div class="form-group">
                                                 <label for="title">Title:</label>
                                                 <label>
-                                                    <input type="text" class="form-control" name="title" value={{ $fund->title }} />
+                                                    <input type="text" class="form-control" name="title" value={{ $fund->title }} >
                                                 </label>
                                             </div>
                                         </td>
@@ -39,7 +39,7 @@
                                         <td colspan="4">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="image" name="image">
-                                                <input type="hidden" name="hidden_image" value="{{ $fund->image }}" />
+                                                <input type="hidden" name="hidden_image" value="{{ $fund->image }}" >
                                                 <label class="custom-file-label" for="image">Choose file</label>
                                             </div>
                                         </td>
@@ -49,19 +49,26 @@
                                             <div class="form-group">
                                                 <label for="description">Description:</label>
                                                 <label>
-                                                    <input type="text" class="form-control" name="description" value={{ $fund->description }} />
+                                                    <input type="text" class="form-control" name="description" value={{ $fund->description }} >
                                                 </label>
                                             </div>
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td colspan="4">
                                             <div class="form-group">
                                                 <label for="buy">Sell Rate:</label>
                                                 <label>
-                                                    <input type="text" class="form-control" name="buy" value={{ $fund->buy }} />
+                                                    <input type="text" class="form-control" name="buy" value={{ $fund->buy }} >
                                                 </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="form-group">
+                                                <label for="account">Receiving Address:</label>
+                                                <input type="text" class="form-control" name="account" value={{ $fund->account }} >
                                             </div>
                                         </td>
                                     </tr>
@@ -78,7 +85,7 @@
                                     <td colspan="4">
                                         <div class="form-group">
                                             <label for="available">Available:</label>
-                                            <input type="text" class="form-control" value={{ $fund->available }} name="available"/>
+                                            <input type="text" class="form-control" value={{ $fund->available }} name="available">
                                         </div>
                                     </td>
                                 </tr>
@@ -86,7 +93,7 @@
                                     <td colspan="4">
                                         <div class="form-group">
                                             <label for="buyrate">Buy Rate:</label>
-                                            <input type="text" class="form-control" value={{ $fund->buyrate }} name="buyrate"/>
+                                            <input type="text" class="form-control" value={{ $fund->buyrate }} name="buyrate">
                                         </div>
                                     </td>
                                 </tr>
@@ -94,7 +101,7 @@
                                     <td colspan="4">
                                         <div class="form-group">
                                             <label for="sellrate">Sell Rate:</label>
-                                            <input type="text" class="form-control" value={{ $fund->sellrate }} name="sellrate"/>
+                                            <input type="text" class="form-control" value={{ $fund->sellrate }} name="sellrate">
                                         </div>
                                     </td>
                                 </tr>
@@ -105,7 +112,7 @@
                         @foreach($funds as $fund)
                             <div class="custom-control custom-checkbox">
                                 <input class="custom-control-input" type="checkbox" name="receive[]" id="{{$fund->id}}" value="{{$fund->id}}">
-                                <label for="{{$fund->id}}" name="receive[]" class="custom-control-label">{{$fund->title}}</label>
+                                <label for="{{$fund->id}}"  class="custom-control-label">{{$fund->title}}</label>
                             </div>
                         @endforeach
                     </div>

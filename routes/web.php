@@ -12,9 +12,14 @@
 */
 
 Route::get('/', function () {
-    $funds = DB::table('funds')->get();
-    return view('frontend.exchangePage.exchange',['funds'=>$funds]);
+    $funds = \App\Fund::all();
+    $receives=[];
+    foreach($funds as $fund){
+        $receives[$fund->id] = explode(",",$fund->receive);
+    }
+    return view('frontend.exchangePage.exchange',['funds'=>$funds,'receives'=>$receives]);
 });
+
 Route::get('/about', function () {
     return view('frontend.aboutUs.about');
 });
@@ -27,6 +32,7 @@ Route::get('/review', function () {
 
 
 Route::get('/multi', function () {
+
     return view('frontend.submitPAge.muti');
 });
 
@@ -50,7 +56,6 @@ Route::get('/admin/user/details', function () {
 });
 
 Route::resource('/admin/fund', 'FundController');
-Route::resource('/admin/afund', 'AfundController');
 
 Route::resource('/admin/charge', 'ChargeController');
 

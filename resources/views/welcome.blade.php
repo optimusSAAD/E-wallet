@@ -7,7 +7,6 @@
     @include('layouts/header')
     @yield('frontContent')
     @include('layouts/footer')
-@stack('js')
     <script src="{{asset('js/jquery/jquery-2.2.4.min.js')}}"></script>
     <!-- Popper js -->
     <script src="{{asset('js/bootstrap/popper.min.js')}}"></script>
@@ -18,5 +17,6 @@
     <!-- Active JS -->
     <script src="{{asset('js/active.js')}}"></script>
 
+    @stack('js')
     </body>
 </html>

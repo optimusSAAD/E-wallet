@@ -62,7 +62,7 @@
                                         <strong>Receive</strong>
                                     </div>
                                     <div class="" id="array" style="{{--height: 200px; overflow: auto;--}}">
-                                        @php $receives = \App\Fund::whereIn(['id', $receive])->get(); @endphp
+                                        @php $receives = \App\Fund::whereIn('id', $receive)->get(); @endphp
                                         @foreach($receives as $r)
                                             <a href="/multi" class="list-group-item">
                                                 <p>

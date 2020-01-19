@@ -23,34 +23,40 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('frontend.aboutUs.about');
 });
+
 Route::get('/contact', function () {
     return view('frontend.contactUs.contact');
 });
+
 Route::get('/review', function () {
     return view('frontend.customReivew.review');
 });
 
-
 Route::get('/multi', function () {
-
-    return view('frontend.submitPAge.muti');
+    $funds = \App\Fund::all();
+    return view('frontend.submitPAge.muti',['funds'=>$funds]);
 });
 
 Route::get('/confirm', function () {
     return view('frontend.payPage.pay');
 });
+
 Route::get('/pay', function () {
     return view('frontend.orderPage.order');
 });
+
 Route::get('/track', function () {
     return view('frontend.historyPage.history');
 });
+
 Route::get('/history', function () {
     return view('frontend.trackPage.track');
 });
+
 Route::get('/admin/user', function () {
     return view('backend.userDetails.user');
 });
+
 Route::get('/admin/user/details', function () {
     return view('backend.userDetails.uDetails');
 });
@@ -61,6 +67,7 @@ Route::resource('/admin/charge', 'ChargeController');
 
 Route::resource('/admin/extra', 'ExtraController');
 
+Route::resource('/admin/order', 'OrderController');
 
 Route::get('/admin/theme', function () {
     return view('backend.themeLogo.theme');
@@ -68,10 +75,6 @@ Route::get('/admin/theme', function () {
 Route::get('/admin/review', function () {
     return view('backend.reviewCustomer.review');
 });
-Route::get('/admin/order', function () {
-    return view('backend.orderDetails.order');
-});
-
 
 Auth::routes();
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class OrderController extends Controller
 {
@@ -14,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders=Order::all();
+        return view('backend.order.index',compact('orders'));
     }
 
     /**
@@ -24,7 +27,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $users=User::all();
+        return view('backend.order.create',compact('users'));
     }
 
     /**
@@ -35,7 +39,19 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order();
+        $user =$request->users_id;
+        $order->fund_id = $request->fund_id;
+        $order->receiving_fund_id = $request->receiving_fund_id;
+        $order->sending_fund_amount = $request->sending_fund_amount;
+        $order->receiving_fund_amount = $request->receiving_fund_amount;
+        $order->sending_account_info = $request->sending_account_info;
+        $order->receiving_account_info = $request->receiving_account_info;
+        $order->contact = $request->contact;
+        $order->users()->associate($user)->save();
+        $order->save();
+
+        return redirect('/admin/order');
     }
 
     /**

@@ -32,9 +32,10 @@ Route::get('/review', function () {
     return view('frontend.customReivew.review');
 });
 
-Route::get('/multi', function () {
-    $funds = \App\Fund::all();
-    return view('frontend.submitPAge.muti',['funds'=>$funds]);
+Route::get('/multi/{id1}/{id2}', function ($id1,$id2) {
+    $send_funds = \App\Fund::where('id', $id1)->get();
+    $receive_funds=\App\Fund::where('id', $id2)->get();
+    return view('frontend.submitPAge.muti',['send_funds'=>$send_funds,'receive_funds'=>$receive_funds]);
 });
 
 Route::get('/confirm', function () {

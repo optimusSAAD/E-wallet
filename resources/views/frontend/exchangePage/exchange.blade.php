@@ -36,24 +36,21 @@
                                     <strong>Receive</strong>
                                 </div>
                                 <div class="listings-grid__item">
-                                        <span id="list-group-2">
-                                            <a href="javascript:void(0);" class="list-group-item">First choose from where you want                                              to exchange.
-                                            </a>
-                                            <div class="list-group-item"
-                                                 style="background-image: linear-gradient(rgba(0,100,0,0), #0667d0);">
-                                                <span style="color: blue; font-size: 18px;">
-                                                    <strong><b>News:</b></strong>
-                                                </span>
-                                                <span
-                                                    style="color: #b30000; font-size: 16px; text-align: justify; font-weight:400; text-justify: inter-word;">
+                                    <span id="list-group-2">
+                                        <a href="javascript:void(0);" class="list-group-item">First choose from where you want to exchange.</a>
+                                        <div class="list-group-item" style="background-image: linear-gradient(rgba(0,100,0,0), #0667d0);">
+                                            <span style="color: blue; font-size: 18px;">
+                                                <strong><b>News:</b></strong>
+                                            </span>
+                                            <span style="color: #b30000; font-size: 16px; text-align: justify; font-weight:400; text-justify: inter-word;">
                                                     Welcome to e-Wallet E-Currency Exchanger.
                                                     We are very happy to work with you.
                                                     Thanks to be with us in this last 4 years.
-                                                </span>
-                                                <br>
-                                            </div>
-                                            <img src="{{asset('/img/core-img/e.jpg')}}">
-                                        </span>
+                                            </span>
+                                            <br>
+                                        </div>
+                                        <img src="{{asset('/img/core-img/e.jpg')}}">
+                                    </span>
                                 </div>
                             </div>
                             @foreach($receives as $fund_id => $receive)
@@ -65,15 +62,16 @@
                                     <div class="" id="array" style="{{--height: 200px; overflow: auto;--}}">
                                         @php $receives = \App\Fund::whereIn('id', $receive)->get(); @endphp
                                         @foreach($receives as $r)
-                                            <a href="/multi" class="list-group-item">
-                                                <p>
+                                            <a href="{{ URL('/multi', [$fund_id,$r->id])}}" class="list-group-item" >
                                                     <img src="{{ $r->image_url  }}" width="32px"
                                                          height="32px"> {{ $r->title  }}
                                                     <span class="pull-right text text-muted hidden-xs hidden-sm"
                                                           style="font-size:11px;">
-                                                <small>Reserve: {{ $r->available }}<br>Exchange rate: {{ $r->buyrate }}</small>
-                                            </span>
-                                                </p>
+                                                        <small>Reserve: {{ $r->available }}
+                                                            <br>
+                                                            Exchange rate: {{ $r->buyrate }}
+                                                        </small>
+                                                    </span>
                                             </a>
                                         @endforeach
                                     </div>
@@ -661,14 +659,12 @@
     </section>
 @endsection
 @push('js')
-
     <script type="text/javascript">
         function switchVisible(fund_id) {
             $(".receive_fund").hide();
           $("#receive_fund_" + fund_id).show();
         }
     </script>
-
 @endpush
 @push('css')
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -687,5 +683,5 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
-    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
 @endpush

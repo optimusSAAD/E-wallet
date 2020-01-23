@@ -6,19 +6,21 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Font-->
-    <link rel="stylesheet" type="text/css" href="1css/roboto-font.css">
-    <link rel="stylesheet" type="text/css" href="1fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('1css/roboto-font.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('1fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')}}">
     <!-- datepicker -->
-    <link rel="stylesheet" type="text/css" href="1css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('1css/jquery-ui.min.css')}}">
     <!-- Main Style Css -->
-    <link rel="stylesheet" href="1css/style.css"/>
+    <link rel="stylesheet" href="{{asset('1css/style.css')}}"/>
 </head>
 <body>
 <div class="page-content" style="background-color: #736989">
     <div class="wizard-v3-content">
         <div class="wizard-form">
+            @foreach($send_funds as $fund_id => $r)
+            @foreach($receive_funds as $fund_id => $receive )
             <div class="wizard-header">
-                <h3 class="heading">Exchange Bkash Personal BDT with Skrill USD</h3>
+                <h3 class="heading">Exchange {{$r->title}} with {{$receive->title}}</h3>
             </div>
             <form class="form-register" action="#" method="post">
                 <div id="form-total">
@@ -30,7 +32,7 @@
                         <div class="inner">
                             <h3>
                                 <div style="text-align: center;">
-                                    <img src="img/icon/bkash.png" width="60px" height="30px">
+                                    <img src="{{$r->image_url}}" width="30px" height="30px">
                                     You Send Us
                                 </div>
                             </h3>
@@ -45,7 +47,7 @@
                             </div>
                             <h3>
                                 <div style="text-align: center;">
-                                    <img src="img/icon/skrill.png" width="60px" height="30px" >
+                                    <img src="{{$receive->image_url}}" width="30px" height="30px" >
                                     You Will Receive
                                 </div>
                             </h3>
@@ -172,13 +174,14 @@
                         </div>
                     </section>
                 </div>
+             @endforeach   @endforeach
             </form>
         </div>
     </div>
 </div>
-<script src="1js/jquery-3.3.1.min.js"></script>
-<script src="1js/jquery.steps.js"></script>
-<script src="1js/jquery-ui.min.js"></script>
-<script src="1js/main.js"></script>
+<script src="{{asset('1js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{asset('1js/jquery.steps.js')}}"></script>
+<script src="{{asset('1js/jquery-ui.min.js')}}"></script>
+<script src="{{asset('1js/main.js')}}"></script>
 </body>
 </html>

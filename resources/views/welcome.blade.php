@@ -16,7 +16,6 @@
     <script src="{{asset('js/others/plugins.js')}}"></script>
     <!-- Active JS -->
     <script src="{{asset('js/active.js')}}"></script>
-
     @stack('js')
     </body>
 </html>

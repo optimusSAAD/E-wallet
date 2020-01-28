@@ -14,7 +14,7 @@ class Charge extends Model
         'discount_rate',
         'status',
     ];
-    public function funds()
+    public function fund()
     {
         return $this->belongsTo(Fund::class);
     }

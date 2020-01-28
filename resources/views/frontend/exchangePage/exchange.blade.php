@@ -62,7 +62,7 @@
                                     <div class="" id="array" style="{{--height: 200px; overflow: auto;--}}">
                                         @php $receives = \App\Fund::whereIn('id', $receive)->get(); @endphp
                                         @foreach($receives as $r)
-                                            <a href="{{ URL('/multi', [$fund_id,$r->id])}}" class="list-group-item" >
+                                            <a href="{{ URL('/order', [$fund_id,$r->id])}}" class="list-group-item" >
                                                     <img src="{{ $r->image_url  }}" width="32px"
                                                          height="32px"> {{ $r->title  }}
                                                     <span class="pull-right text text-muted hidden-xs hidden-sm"

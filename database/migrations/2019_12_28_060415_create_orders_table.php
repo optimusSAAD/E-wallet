@@ -15,17 +15,20 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('users_id')->unsigned()->nullable();
-            $table->foreign('users_id')
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-            $table->integer('fund_id')->nullable();
-            $table->integer('receiving_fund_id')->nullable();
-            $table->float('sending_fund_amount',8,3);
-            $table->float(' ',8,3)->nullable();
-            $table->string('sending_account_info');
-            $table->string('receiving_account_info')->nullable();
-            $table->string('contact',1000)->nullable();
+            $table->integer('user_send_fund_id');
+            $table->integer('user_receive_fund_id');
+            $table->float('user_send_fund_amount',8,3);
+            $table->float('user_receive_fund_amount',8,3);
+            $table->string('user_receive_fund_account',1000);
+            $table->float('user_total_pay',8,3);
+            $table->string('user_transaction_id',3000);
+            $table->string('user_contact',1000);
+            $table->string('note',3000)->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

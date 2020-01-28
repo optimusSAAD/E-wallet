@@ -16,8 +16,8 @@ class CreateChargesTable extends Migration
         Schema::create('charges', function (Blueprint $table)
         {
             $table->bigIncrements('id');
-            $table->integer('funds_id')->unsigned()->nullable();
-            $table->foreign('funds_id')
+            $table->integer('fund_id')->unsigned()->nullable();
+            $table->foreign('fund_id')
                 ->references('id')->on('funds')
                 ->onDelete('cascade');
             $table->float('amount_to',10 ,3);

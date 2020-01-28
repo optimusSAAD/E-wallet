@@ -39,7 +39,7 @@
                                 @foreach($charges as $charge)
                                     <tr>
                                         <td>{{$charge->id}}</td>
-                                        <td>{{$charge->funds->title}} </td>
+                                        <td>{{$charge->fund->title}} </td>
                                         <td>{{$charge->amount_to}}</td>
                                         <td>{{$charge->amount_from}}</td>
                                         <td>{{$charge->sending_rate}}</td>

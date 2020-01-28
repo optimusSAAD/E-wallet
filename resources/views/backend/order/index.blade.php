@@ -6,11 +6,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Orders
-                    <a href="{{route('order.create')}}" class="btn btn-primary btn-sm" style="text-align: center;">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </a>
-                </h3>
+                <h3 class="card-title">Orders</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fas fa-minus"></i></button>
@@ -20,13 +16,10 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th >Order No.</th>
+                            <th >Order Id</th>
                             <th>User Name</th>
-                            <th>User Contact NO</th>
-                            <th>Sent Fund</th>
-                            <th>Receive Fund</th>
-                            <th>Send Account</th>
-                            <th>Receive Account</th>
+                            <th>Sent</th>
+                            <th>Receive</th>
                             <th>Status</th>
                             <th>Date</th>
                             <th>Action</th>
@@ -36,8 +29,7 @@
                     @foreach($orders as $order)
                         <tr>
                             <td>{{$order->id}}</td>
-                            <td>{{$order->users->name}}</td>
-                            <td>{{$order->contact}}</td>
+                            <td>{{$order->user->name}}</td>
                             <td>
                                 <a>{{$order->sending_fund_amount}}</a>
                                 <br><small>(Rocket Personal)</small>
@@ -49,8 +41,6 @@
                                     Skrill(instant)
                                 </small>
                             </td>
-                            <td>{{$order->sending_fund_amount}}</td>
-                            <td>{{$order->receiving_fund_amount}}</td>
                             <td>
                                 Cancelled by Admin
                             </td>
@@ -59,10 +49,67 @@
                                 2 hours ago
                             </td>
                             <td>
-                                <a href="{{ route('order.edit', $order->id)}}" class="btn btn-primary"><i class="fas fa-hourglass"></i> pending</a>
-                                <a href="{{ route('order.edit', $order->id)}}" class="btn btn-success"><i class="fas fa-check"> complete</i></a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">View</button>
+                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <table style="" class="wp-list-table fixed striped posts">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="display: table-cell;">Order Id</td>
+                                                    <td style="display: table-cell;">{{$order->id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="display: table-cell;">Sent</td>
+                                                    <td style="display: table-cell;">{{$order->sending_fund_amount}} <sub>(Bkash)</sub></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="display: table-cell;">Receive</td>
+                                                    <td style="display: table-cell;">{{$order->receiving_fund_amount}} <sub>(Web Money)</sub></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="display: table-cell;">your web money address</td>
+                                                    <td style="display: table-cell;">Z185381669524</td>
+                                                </tr>
 
-                                <a href="{{ route('order.edit', $order->id)}}" class="btn btn-danger"><i class="fas fa-times"> cancel</i></a>
+                                                <tr>
+                                                    <td style="display: table-cell;">01777 007 987 - Bkash agent number ..</td>
+                                                    <td style="display: table-cell;">01777007987</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="display: table-cell;">Your Bkash full Number</td>
+                                                    <td style="display: table-cell;">01773794238</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="display: table-cell;">Input your Contact number (Mobile)</td>
+                                                    <td style="display: table-cell;">01773794238</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="display: table-cell;">Note(if you want)</td>
+                                                    <td style="display: table-cell;"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="display: table-cell;" colspan="2">
+                                                        <div class="alignright">
+                                                            <form action="" method="post">
+                                                                <input type="hidden" name="_token" value="d02c5de9cf">
+                                                                <input type="hidden" name="order_id" value="121369">
+                                                                <input type="hidden" name="do" value="order-action">
+                                                                <select name="order_action">
+                                                                    <option value="pending" selected="">Pending</option>
+                                                                    <option value="complete">Complete</option>
+                                                                    <option value="delete">Delete</option>
+                                                                </select>
+                                                                <input type="submit" class="button button-primary">
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

@@ -12,7 +12,7 @@ class ChargeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -23,7 +23,7 @@ class ChargeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -35,7 +35,7 @@ class ChargeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
@@ -46,7 +46,7 @@ class ChargeController extends Controller
         $charge->sending_rate = $request->sending_rate;
         $charge->discount_rate = $request->discount_rate;
         $charge->status = $request->has('status');
-        $charge->funds()->associate($fund)->save();
+        $charge->fund()->associate($fund)->save();
         $charge->save();
 
         return redirect('/admin/charge')->with('success', 'Charge Added!');
@@ -67,7 +67,7 @@ class ChargeController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Charge  $charge
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Charge $charge)
     {
@@ -79,7 +79,7 @@ class ChargeController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Charge  $charge
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Charge $charge)
     {
@@ -102,7 +102,7 @@ class ChargeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Charge $charge
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
     public function destroy(Charge $charge)

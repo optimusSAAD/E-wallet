@@ -36,4 +36,9 @@ $(function(){
         showOn: "both",
         buttonText : '<i class="zmdi zmdi-chevron-down"></i>',
     });
+    $('input').keyup(function(){ // run anytime the value changes
+        var firstValue  = Number($('#user_send_fund_amount').val());
+        var secondValue = Number($('#fixed_amount').val());
+        document.getElementById('total_expenses').value = firstValue * secondValue ;
+    });
 });

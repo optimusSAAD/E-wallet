@@ -124,9 +124,6 @@
                                         <div class="modal-body">
                                             <table class="table table-hover">
                                                 <tbody>
-                                                <thead>
-
-                                                </thead>
                                                 <tr>
                                                     <td colspan="2">Order Id</td>
                                                     <td>#007</td>

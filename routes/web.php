@@ -36,7 +36,7 @@ Route::get('/order/{id1}/{id2}', function ($id1,$id2) {
     $send_funds = \App\Fund::where('id', $id1)->get();
     $receive_funds=\App\Fund::where('id', $id2)->get();
     return view('frontend.submitPAge.multi',['send_funds'=>$send_funds,'receive_funds'=>$receive_funds]);
-});
+})->middleware('verified');
 
 Route::get('/confirm', function () {
     return view('frontend.payPage.pay');
@@ -77,7 +77,7 @@ Route::get('/admin/review', function () {
     return view('backend.reviewCustomer.review');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 

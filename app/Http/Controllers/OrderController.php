@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\User;
+use App\Fund;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,8 +20,9 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $fund=Fund::all();
         $orders=Order::all();
-        return view('backend.order.index',compact('orders'));
+        return view('backend.order.index',compact('orders','fund'));
     }
 
     /**
@@ -38,16 +40,12 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
         $order = new Order();
-        if(Auth::check())
-        {
-             Auth::user()->id;
-        }
-        $user =$request->users_id;
+        $order->user_id=auth()->user()->id;
         $order->user_send_fund_id = $request->user_send_fund_id;
         $order->user_receive_fund_id = $request->user_receive_fund_id;
         $order->user_send_fund_amount = $request->user_send_fund_amount;
@@ -58,10 +56,10 @@ class OrderController extends Controller
         $order->user_contact = $request->user_contact;
         $order->note = $request->note;
         $order->status = $request->status;
-        $order->user()->associate($user)->save();
+
         $order->save();
 
-        return redirect('/admin/order');
+        return redirect('/')->with('Successfully Ordered!');
     }
 
     /**

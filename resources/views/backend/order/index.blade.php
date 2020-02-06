@@ -31,26 +31,24 @@
                             <td>{{$order->id}}</td>
                             <td>{{$order->user->name}}</td>
                             <td>
-                                <a>{{$order->sending_fund_amount}}</a>
-                                <br><small>(Rocket Personal)</small>
-                                <br><small>(Send Money)</small>
+                                <a>{{$order->user_total_pay}}</a>
+                                <br><small>{{$order->user_send_fund_id}}</small>
                             </td>
                             <td>
-                                <a>{{$order->receiving_fund_amount}}</a><br>
+                                <a>{{$order->user_receive_fund_amount}}</a><br>
                                 <small>
-                                    Skrill(instant)
+                                    {{$order->user_receive_fund_id}}
                                 </small>
                             </td>
                             <td>
-                                Cancelled by Admin
+                                {{$order->status}}
                             </td>
                             <td>
-                                Last Modified<br>
-                                2 hours ago
+                                {{$order->updated_at}}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">View</button>
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-{{$order->id}}">View</button>
+                                <div class="modal fade bd-example-modal-{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <table style="" class="wp-list-table fixed striped posts">
@@ -61,32 +59,32 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="display: table-cell;">Sent</td>
-                                                    <td style="display: table-cell;">{{$order->sending_fund_amount}} <sub>(Bkash)</sub></td>
+                                                    <td style="display: table-cell;">{{$order->user_total_pay}} <sub>{{$order->user_send_fund_id}}</sub></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="display: table-cell;">Receive</td>
-                                                    <td style="display: table-cell;">{{$order->receiving_fund_amount}} <sub>(Web Money)</sub></td>
+                                                    <td style="display: table-cell;">{{$order->user_receive_fund_amount}} <sub>{{$order->user_receive_fund_id}}</sub></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="display: table-cell;">your web money address</td>
-                                                    <td style="display: table-cell;">Z185381669524</td>
+                                                    <td style="display: table-cell;">{{$order->user->name}}'s {{$order->user_receive_fund_id}} address</td>
+                                                    <td style="display: table-cell;">{{$order->user_receive_fund_account}}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td style="display: table-cell;">01777 007 987 - Bkash agent number ..</td>
-                                                    <td style="display: table-cell;">01777007987</td>
+                                                    <td style="display: table-cell;">Our {{$order->user_send_fund_id}}'s Account</td>
+                                                    <td style="display: table-cell;"> </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="display: table-cell;">Your Bkash full Number</td>
-                                                    <td style="display: table-cell;">01773794238</td>
+                                                    <td style="display: table-cell;">{{$order->user->name}}'s {{$order->user_send_fund_id}} id</td>
+                                                    <td style="display: table-cell;"> {{$order->user_transaction_id}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="display: table-cell;">Input your Contact number (Mobile)</td>
-                                                    <td style="display: table-cell;">01773794238</td>
+                                                    <td style="display: table-cell;">{{$order->user->name}}'s Contact number (Mobile)</td>
+                                                    <td style="display: table-cell;">{{$order->user_contact}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="display: table-cell;">Note(if you want)</td>
-                                                    <td style="display: table-cell;"></td>
+                                                    <td style="display: table-cell;">{{$order->user->name}}'s Note</td>
+                                                    <td style="display: table-cell;"> {{$order->note}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="display: table-cell;" colspan="2">

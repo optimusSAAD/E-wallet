@@ -197,14 +197,14 @@
                                         </div>
                                     </div>
                                     <h3>
-                                        <div style="text-align: center;">Your Transaction id</div>
+                                        <div style="text-align: center;">Your {{$r->title}} account</div>
                                     </h3>
                                     <div class="form-row">
                                         <div class="form-holder form-holder-2">
                                             <label class="form-row-inner">
                                                 <input type="text" class="form-control" id="user_transaction_id"
                                                        name="user_transaction_id" required>
-                                                <span class="label">Transaction id/number</span>
+                                                <span class="label">Account id/number</span>
                                                 <span class="border"></span>
                                             </label>
                                         </div>

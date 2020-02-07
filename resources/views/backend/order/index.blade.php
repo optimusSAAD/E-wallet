@@ -71,8 +71,8 @@
                                                 </tr>
 
                                                 <tr>
-                                                    <td style="display: table-cell;">Our {{$order->user_send_fund_id}}'s Account</td>
-                                                    <td style="display: table-cell;"> </td>
+                                                    <td style="display: table-cell;">Our's {{$order->user_send_fund_id}} Account</td>
+                                                    <td style="display: table-cell;">{{$order->user_send_fund_account}} </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="display: table-cell;">{{$order->user->name}}'s {{$order->user_send_fund_id}} id</td>
@@ -90,13 +90,11 @@
                                                     <td style="display: table-cell;" colspan="2">
                                                         <div class="alignright">
                                                             <form action="" method="post">
-                                                                <input type="hidden" name="_token" value="d02c5de9cf">
-                                                                <input type="hidden" name="order_id" value="121369">
-                                                                <input type="hidden" name="do" value="order-action">
+                                                                <input type="hidden" name="{{$order->id}}" value="">
                                                                 <select name="order_action">
-                                                                    <option value="pending" selected="">Pending</option>
-                                                                    <option value="complete">Complete</option>
-                                                                    <option value="delete">Delete</option>
+                                                                    <option value="0" selected="">Pending</option>
+                                                                    <option value="1">Complete</option>
+                                                                    <option value="2">Delete</option>
                                                                 </select>
                                                                 <input type="submit" class="button button-primary">
                                                             </form>

@@ -50,6 +50,7 @@ class OrderController extends Controller
         $order->user_receive_fund_id = $request->user_receive_fund_id;
         $order->user_send_fund_amount = $request->user_send_fund_amount;
         $order->user_receive_fund_amount = $request->user_receive_fund_amount;
+        $order->user_send_fund_account = $request->user_send_fund_account;
         $order->user_receive_fund_account = $request->user_receive_fund_account;
         $order->user_total_pay = $request->user_total_pay;
         $order->user_transaction_id = $request->user_transaction_id;

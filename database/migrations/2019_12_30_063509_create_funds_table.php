@@ -18,10 +18,10 @@ class CreateFundsTable extends Migration
             $table->text('title');
             $table->string('image');
             $table->string('description',10000)->nullable();
-            $table->float('available',10,2);
-            $table->float('buy',10,3);
-            $table->float('buyrate',10,3);
-            $table->float('sellrate',10,3);
+            $table->float('available',13,5);
+            $table->float('buy',13,5);
+            $table->float('buyrate',13,5);
+            $table->float('sellrate',13,5);
             $table->string('account',1000)->nullable();
             $table->string('receive')->nullable();
             $table->timestamps();

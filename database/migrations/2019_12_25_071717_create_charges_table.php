@@ -20,10 +20,10 @@ class CreateChargesTable extends Migration
             $table->foreign('fund_id')
                 ->references('id')->on('funds')
                 ->onDelete('cascade');
-            $table->float('amount_to',10 ,3);
-            $table->float('amount_from',10 ,3);
-            $table->float('sending_rate',10,3);
-            $table->float('discount_rate',10,3)->nullable();
+            $table->float('amount_to',13 ,5);
+            $table->float('amount_from',13 ,5);
+            $table->float('sending_rate',13,5);
+            $table->float('discount_rate',13,5)->default(0);
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

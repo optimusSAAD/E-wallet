@@ -38,21 +38,14 @@ Route::get('/order/{id1}/{id2}', function ($id1,$id2) {
     return view('frontend.submitPAge.multi',['send_funds'=>$send_funds,'receive_funds'=>$receive_funds]);
 })->middleware('verified');
 
-Route::get('/confirm', function () {
-    return view('frontend.payPage.pay');
-});
-
-Route::get('/pay', function () {
-    return view('frontend.orderPage.order');
-});
 
 Route::get('/track', function () {
-    return view('frontend.historyPage.history');
-});
+    $user = Auth::user();
+    $orders = \App\Order::all();
+    return view('frontend.historyPage.history',['orders'=>$orders,'user'=>$user]);
+})->middleware('verified');
 
-Route::get('/history', function () {
-    return view('frontend.trackPage.track');
-});
+
 
 Route::get('/admin/user', function () {
     return view('backend.userDetails.user');

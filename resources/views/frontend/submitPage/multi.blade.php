@@ -194,6 +194,7 @@
                                                 <span class="label"><b>{{$r->account}}</b></span>
                                                 <span class="border"></span>
                                             </label>
+                                            <input type="text" class="form-control" id="user_send_fund_account" name="user_send_fund_account" value="{{$r->account}}" hidden>
                                         </div>
                                     </div>
                                     <h3>

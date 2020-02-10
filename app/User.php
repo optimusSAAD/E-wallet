@@ -41,4 +41,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Order::class);
     }
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+    public function getImageUrlAttribute()
+    {
+        return url('profile/' . $this->pic);
+    }
 }

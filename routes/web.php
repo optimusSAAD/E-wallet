@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
+    $users=\App\User::paginate(4);
     $funds = \App\Fund::all();
     $receives=[];
     foreach($funds as $fund){
         $receives[$fund->id] = explode(",",$fund->receive);
     }
-    return view('frontend.exchangePage.exchange',['funds'=>$funds,'receives'=>$receives]);
+    return view('frontend.exchangePage.exchange',['funds'=>$funds,'receives'=>$receives,'users'=>$users]);
 });
 
 Route::get('/about', function () {
@@ -29,13 +30,15 @@ Route::get('/contact', function () {
 });
 
 Route::get('/review', function () {
-    return view('frontend.customReivew.review');
+    $users=\App\User::paginate(6);
+    return view('frontend.customReivew.review',['users'=>$users]);
 });
 
 Route::get('/order/{id1}/{id2}', function ($id1,$id2) {
     $send_funds = \App\Fund::where('id', $id1)->get();
     $receive_funds=\App\Fund::where('id', $id2)->get();
-    return view('frontend.submitPAge.multi',['send_funds'=>$send_funds,'receive_funds'=>$receive_funds]);
+    $statuses = \App\Status::all();
+    return view('frontend.submitPAge.multi',['send_funds'=>$send_funds,'receive_funds'=>$receive_funds,'statuses'=>$statuses]);
 })->middleware('verified');
 
 
@@ -49,28 +52,39 @@ Route::get('/track', function () {
 
 Route::get('/admin/user', function () {
     return view('backend.userDetails.user');
-});
+})->middleware(['auth','admin']);
 
 Route::get('/admin/user/details', function () {
     return view('backend.userDetails.uDetails');
-});
+})->middleware(['auth','admin']);
 
-Route::resource('/admin/fund', 'FundController');
+Route::resource('/admin/fund', 'FundController')->middleware(['auth','admin']);
 
-Route::resource('/admin/charge', 'ChargeController');
+Route::resource('/admin/charge', 'ChargeController')->middleware(['auth','admin']);
 
-Route::resource('/admin/extra', 'ExtraController');
+Route::resource('/admin/extra', 'ExtraController')->middleware(['auth','admin']);
 
 Route::resource('/admin/order', 'OrderController');
 
+Route::resource('/admin/status', 'StatusController')->middleware(['auth','admin']);
+
+
 Route::get('/admin/theme', function () {
     return view('backend.themeLogo.theme');
-});
+})->middleware(['auth','admin']);
 Route::get('/admin/review', function () {
     return view('backend.reviewCustomer.review');
-});
+})->middleware(['auth','admin']);
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile/update', 'HomeController@update')->name('profile.update');
+Route::put('/profile/update/edit', 'HomeController@profile')->name('profile.update.edit');
 
+Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>['auth','admin']],function (){
+    Route::get('dashboard','AdminController@index')->name('dashboard');
+});
+Route::group(['as'=>'user.','prefix'=>'user','middleware'=>['auth','user']],function (){
+    Route::get('dashboard','UserController@index')->name('dashboard');
+});

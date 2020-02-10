@@ -11,4 +11,8 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function statuses()
+    {
+        return $this->hasMany(Status::class);
+    }
 }

@@ -41,7 +41,13 @@
                                 </small>
                             </td>
                             <td>
-                                {{$order->status}}
+                                @if($order->status_id == 1)
+                                    Pending
+                                    @elseif($order->status_id == 2)
+                                    Completed
+                                    @else
+                                    Canceled
+                                    @endif
                             </td>
                             <td>
                                 {{$order->updated_at}}
@@ -88,13 +94,17 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="display: table-cell;" colspan="2">
-                                                        <div class="alignright">
-                                                            <form action="" method="post">
-                                                                <input type="hidden" name="{{$order->id}}" value="">
-                                                                <select name="order_action">
-                                                                    <option value="0" selected="">Pending</option>
-                                                                    <option value="1">Complete</option>
-                                                                    <option value="2">Delete</option>
+                                                        <div class="col-3">
+                                                            <form action="{{ route('order.update',$order->id)}}" method="post">
+                                                                @method('PUT')
+                                                                @csrf
+                                                                <select class="form-control" name="status_id" id="status_id">
+                                                                    <option >Select Status</option>
+                                                                    @foreach($statuses as $status)
+                                                                        <option value="{{$status->id}}">
+                                                                            {{$status->name}}
+                                                                        </option>
+                                                                    @endforeach
                                                                 </select>
                                                                 <input type="submit" class="button button-primary">
                                                             </form>

@@ -23,7 +23,7 @@
                     <div class="wizard-header">
                         <h3 class="heading">Exchange {{$r->title}} with {{$receive->title}}</h3>
                     </div>
-                    <form  method="post" class="form-register" action="{{ route('order.store') }}">
+                    <form  method="post" class="form-register" action="{{ route('order.store') }}" novalidate>
                         @csrf
                         <div id="form-total">
                             <h2>
@@ -238,7 +238,7 @@
                                     <div class="form-row">
                                         <div class="form-holder form-holder-2">
                                             <label class="form-row-inner">
-                                                <input type="text" class="form-control" id="status" name="status" value="0" hidden>
+                                                <input class="form-control" name="status_id" id="status_id" value="1" hidden>
                                             </label>
                                         </div>
                                     </div>

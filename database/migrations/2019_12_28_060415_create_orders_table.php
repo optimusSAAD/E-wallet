@@ -29,7 +29,10 @@ class CreateOrdersTable extends Migration
             $table->string('user_transaction_id',3000);
             $table->string('user_contact',1000);
             $table->string('note',3000)->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status_id')->unsigned()->default('1');
+            $table->foreign('status_id')
+                ->references('id')->on('statues')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

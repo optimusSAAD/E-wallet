@@ -12,7 +12,7 @@
                                     <tbody>
 
                                     <tr class="table-primary">
-                                        <td colspan="4">
+                                        <td colspan="5">
                                             <h2 class="text-center">
                                                 Transaction History
                                             </h2>
@@ -20,7 +20,8 @@
                                     </tr>
                                     <tr>
                                         <td>Order Id</td>
-                                        <td>Exchange With</td>
+                                        <td>Exchange </td>
+                                        <td>Status </td>
                                         <td>Date & Time</td>
                                         <td>Details</td>
                                     </tr>
@@ -30,6 +31,15 @@
                                         <tr>
                                             <td>{{$order->id}}</td>
                                             <td > {{$order->user_send_fund_id}} -> {{$order->user_receive_fund_id}}</td>
+                                            <td >
+                                                @if($order->status_id == 1)
+                                                    Pending
+                                                @elseif($order->status_id == 2)
+                                                    Completed
+                                                @else
+                                                    Canceled
+                                                @endif
+                                            </td>
                                             <td > {{$order->updated_at}}</td>
                                             <td >
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-{{$order->id}}">View</button>
@@ -57,7 +67,17 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="2">Status:
-                                                                        <a value="{{$order->status}}"><b>Pending</b></a>
+                                                                        <a>
+                                                                            <b>
+                                                                                @if($order->status_id == 1)
+                                                                                    Pending
+                                                                                @elseif($order->status_id == 2)
+                                                                                    Completed
+                                                                                @else
+                                                                                    Canceled
+                                                                                @endif
+                                                                            </b>
+                                                                        </a>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>

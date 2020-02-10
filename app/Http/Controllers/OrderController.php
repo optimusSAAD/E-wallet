@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\User;
 use App\Fund;
+use App\Status;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,9 +21,10 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $statuses=Status::all();
         $fund=Fund::all();
         $orders=Order::all();
-        return view('backend.order.index',compact('orders','fund'));
+        return view('backend.order.index',compact('orders','fund','statuses'));
     }
 
     /**
@@ -32,8 +34,9 @@ class OrderController extends Controller
      */
     public function create()
     {
+        $statuses=Status::all();
         $user=User::all();
-        return view('frontend.submitPage.multi',compact('user'));
+        return view('frontend.submitPage.multi',compact('user','statuses'));
     }
 
     /**
@@ -56,8 +59,7 @@ class OrderController extends Controller
         $order->user_transaction_id = $request->user_transaction_id;
         $order->user_contact = $request->user_contact;
         $order->note = $request->note;
-        $order->status = $request->status;
-
+        $order->status_id =$request->status_id;
         $order->save();
 
         return redirect('/')->with('Successfully Ordered!');
@@ -94,7 +96,9 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->status_id=$request->status_id;
+        $order->update($request->all());
+        return redirect('/admin/order');
     }
 
     /**

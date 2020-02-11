@@ -20,34 +20,21 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>User name</th>
+                                <th>Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Posts</th>
-
+                                <th>Review</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($users as $user)
                             <tr>
-                                <td><a href="/admin/user/details" class="button">01674208662</a><br><small><a href="" class="button">delete</a></small></td>
-                                <td>John Doe</td>
-                                <td>Jd@emial.com</td>
-                                <td>-</td>
-
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->review}}</td>
                             </tr>
-                            <tr>
-                                <td>013000219</td>
-                                <td>Alexander Pierce</td>
-                                <td>AP@email.com</td>
-                                <td>Hi</td>
-
-                            </tr>
-                            <tr>
-                                <td>john</td>
-                                <td>Bob Doe</td>
-                                <td>bd@email.com</td>
-                                <td>Approved</td>
-                            </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -55,7 +42,12 @@
                 </div>
                 <!-- /.card -->
             </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center pt-4">
+                    {{ $users=\App\User::latest ()->paginate(10)}}
+                    {{ $users->links()}}
+                </div>
+            </div>
         </div>
     </div>
     @endsection
-@push('js')

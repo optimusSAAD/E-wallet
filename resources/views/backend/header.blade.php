@@ -48,25 +48,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/extra" class="nav-link">
-                        <i class="fas fa-shield-alt nav-icon"></i>
-                        <p>Theme & Logo</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/review" class="nav-link">
-                        <i class="nav-icon fas fa-comments"></i>
-                        <p>
-                            Review
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="/admin/order" class="nav-link">
                         <i class="nav-icon fa fa-shopping-cart"></i>
                         <p>
                             Orders
                         </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/extra" class="nav-link">
+                        <i class="fas fa-shield-alt nav-icon"></i>
+                        <p>Theme & Logo</p>
                     </a>
                 </li>
             </ul>

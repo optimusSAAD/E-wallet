@@ -32,22 +32,30 @@
                             <td>{{$order->user->name}}</td>
                             <td>
                                 <a>{{$order->user_total_pay}}</a>
-                                <br><small>{{$order->user_send_fund_id}}</small>
+                                <br>
+                                <small>
+                                    @foreach($funds as $fund)
+                                    @if($order->user_send_fund_id == $fund->id)
+                                        {{$fund->title}}
+                                        @endif
+                                        @endforeach
+                                </small>
                             </td>
                             <td>
                                 <a>{{$order->user_receive_fund_amount}}</a><br>
                                 <small>
-                                    {{$order->user_receive_fund_id}}
+                                    @foreach($funds as $fund)
+                                        @if($order->user_receive_fund_id == $fund->id)
+                                            {{$fund->title}}
+                                        @endif
+                                    @endforeach
                                 </small>
                             </td>
                             <td>
-                                @if($order->status_id == 1)
-                                    Pending
-                                    @elseif($order->status_id == 2)
-                                    Completed
-                                    @else
-                                    Canceled
-                                    @endif
+                                @foreach($statuses as $status)
+                                @if($order->status_id == $status->id)
+                                    {{$status->name}}@endif
+                                @endforeach
                             </td>
                             <td>
                                 {{$order->updated_at}}
@@ -65,23 +73,43 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="display: table-cell;">Sent</td>
-                                                    <td style="display: table-cell;">{{$order->user_total_pay}} <sub>{{$order->user_send_fund_id}}</sub></td>
+                                                    <td style="display: table-cell;">{{$order->user_total_pay}} <sub>@foreach($funds as $fund)
+                                                                @if($order->user_send_fund_id == $fund->id)
+                                                                    {{$fund->title}}
+                                                                @endif
+                                                            @endforeach</sub></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="display: table-cell;">Receive</td>
-                                                    <td style="display: table-cell;">{{$order->user_receive_fund_amount}} <sub>{{$order->user_receive_fund_id}}</sub></td>
+                                                    <td style="display: table-cell;">{{$order->user_receive_fund_amount}} <sub>@foreach($funds as $fund)
+                                                                @if($order->user_receive_fund_id == $fund->id)
+                                                                    {{$fund->title}}
+                                                                @endif
+                                                            @endforeach</sub></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="display: table-cell;">{{$order->user->name}}'s {{$order->user_receive_fund_id}} address</td>
+                                                    <td style="display: table-cell;">{{$order->user->name}}'s @foreach($funds as $fund)
+                                                            @if($order->user_receive_fund_id == $fund->id)
+                                                                {{$fund->title}}
+                                                            @endif
+                                                        @endforeach address</td>
                                                     <td style="display: table-cell;">{{$order->user_receive_fund_account}}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td style="display: table-cell;">Our's {{$order->user_send_fund_id}} Account</td>
+                                                    <td style="display: table-cell;">Our's @foreach($funds as $fund)
+                                                            @if($order->user_send_fund_id == $fund->id)
+                                                                {{$fund->title}}
+                                                            @endif
+                                                        @endforeach Account</td>
                                                     <td style="display: table-cell;">{{$order->user_send_fund_account}} </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="display: table-cell;">{{$order->user->name}}'s {{$order->user_send_fund_id}} id</td>
+                                                    <td style="display: table-cell;">{{$order->user->name}}'s @foreach($funds as $fund)
+                                                            @if($order->user_send_fund_id == $fund->id)
+                                                                {{$fund->title}}
+                                                            @endif
+                                                        @endforeach id</td>
                                                     <td style="display: table-cell;"> {{$order->user_transaction_id}}</td>
                                                 </tr>
                                                 <tr>
@@ -121,6 +149,11 @@
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center pt-4">
+                    {{ $orders->links() }}
+                </div>
             </div>
         </div>
     </section>

@@ -12,18 +12,21 @@
 */
 
 Route::get('/', function () {
+    $orders = \App\Order::latest ()->paginate(10);
     $users=\App\User::paginate(4);
     $funds = \App\Fund::all();
     $receives=[];
     foreach($funds as $fund){
         $receives[$fund->id] = explode(",",$fund->receive);
     }
-    return view('frontend.exchangePage.exchange',['funds'=>$funds,'receives'=>$receives,'users'=>$users]);
+    return view('frontend.exchangePage.exchange',['funds'=>$funds,'receives'=>$receives,'users'=>$users,'orders'=>$orders]);
 });
 
 Route::get('/about', function () {
-    return view('frontend.aboutUs.about');
+    $extras = App\Extra::all();
+    return view('frontend.aboutUs.about',['extras'=>$extras]);
 });
+
 
 Route::get('/contact', function () {
     return view('frontend.contactUs.contact');
@@ -43,18 +46,22 @@ Route::get('/order/{id1}/{id2}', function ($id1,$id2) {
 
 
 Route::get('/track', function () {
+    $statuses = \App\Status::all();
+    $funds=\App\Fund::all();
     $user = Auth::user();
     $orders = \App\Order::all();
-    return view('frontend.historyPage.history',['orders'=>$orders,'user'=>$user]);
+    return view('frontend.historyPage.history',['orders'=>$orders,'user'=>$user,'funds'=>$funds,'statuses'=>$statuses]);
 })->middleware('verified');
 
 
 
 Route::get('/admin/user', function () {
-    return view('backend.userDetails.user');
+    $users = \App\User::all();
+    return view('backend.userDetails.user',['users'=>$users]);
 })->middleware(['auth','admin']);
 
 Route::get('/admin/user/details', function () {
+
     return view('backend.userDetails.uDetails');
 })->middleware(['auth','admin']);
 

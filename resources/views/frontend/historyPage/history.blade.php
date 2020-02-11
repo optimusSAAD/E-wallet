@@ -25,20 +25,24 @@
                                         <td>Date & Time</td>
                                         <td>Details</td>
                                     </tr>
-
                                     @php($orders = App\User::find($user->id)->orders)
                                         @foreach($orders as $order)
                                         <tr>
                                             <td>{{$order->id}}</td>
-                                            <td > {{$order->user_send_fund_id}} -> {{$order->user_receive_fund_id}}</td>
+                                            <td >@foreach($funds as $fund)
+                                                    @if($order->user_send_fund_id == $fund->id)
+                                                        {{$fund->title}}
+                                                    @endif
+                                                @endforeach With @foreach($funds as $fund)
+                                                    @if($order->user_receive_fund_id == $fund->id)
+                                                        {{$fund->title}}
+                                                    @endif
+                                                @endforeach</td>
                                             <td >
-                                                @if($order->status_id == 1)
-                                                    Pending
-                                                @elseif($order->status_id == 2)
-                                                    Completed
-                                                @else
-                                                    Canceled
-                                                @endif
+                                                @foreach($statuses as $status)
+                                                    @if($order->status_id == $status->id)
+                                                        {{$status->name}}@endif
+                                                @endforeach
                                             </td>
                                             <td > {{$order->updated_at}}</td>
                                             <td >
@@ -50,10 +54,18 @@
                                                                 <tbody>
                                                                 <tr>
                                                                     <td colspan="4">
-                                                                        <h2 class="text-center">
-                                                                            <img src="{{asset('img/icon/bkash.png')}}" width="50px" height="36px" class="img-circle"> <b>{{$order->user_send_fund_id}}</b>
-                                                                            With
-                                                                            <img src="{{asset('img/icon/skrill.png')}}" width="50px" height="36px" class="img-circle"> <b>{{$order->user_receive_fund_id}}</b>
+                                                                        <h2 class="text-center">@foreach($funds as $fund)
+                                                                                @if($order->user_send_fund_id == $fund->id)
+
+                                                                                    <img src="{{$fund->image_url}}" width="50px" height="36px" class="img-circle"> <b>{{$fund->title}}</b>
+                                                                                @endif
+                                                                            @endforeach
+                                                                            with
+                                                                            @foreach($funds as $fund)
+                                                                                @if($order->user_receive_fund_id == $fund->id)
+                                                                                    <img src="{{$fund->image_url}}" width="50px" height="36px" class="img-circle"> <b>{{$fund->title}}</b>
+                                                                                @endif
+                                                                            @endforeach
                                                                         </h2><br>
                                                                     </td>
                                                                 </tr>
@@ -69,13 +81,10 @@
                                                                     <td colspan="2">Status:
                                                                         <a>
                                                                             <b>
-                                                                                @if($order->status_id == 1)
-                                                                                    Pending
-                                                                                @elseif($order->status_id == 2)
-                                                                                    Completed
-                                                                                @else
-                                                                                    Canceled
-                                                                                @endif
+                                                                                @foreach($statuses as $status)
+                                                                                    @if($order->status_id == $status->id)
+                                                                                        {{$status->name}}@endif
+                                                                                @endforeach
                                                                             </b>
                                                                         </a>
                                                                     </td>

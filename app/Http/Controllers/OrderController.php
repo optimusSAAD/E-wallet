@@ -22,9 +22,9 @@ class OrderController extends Controller
     public function index()
     {
         $statuses=Status::all();
-        $fund=Fund::all();
-        $orders=Order::all();
-        return view('backend.order.index',compact('orders','fund','statuses'));
+        $funds=Fund::all();
+        $orders=Order::latest ()->paginate(10);
+        return view('backend.order.index',compact('orders','funds','statuses'));
     }
 
     /**

@@ -243,9 +243,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <button class="btn" type="submit" >Submit</button>
                             </section>
                         </div>
-                        <button class="btn" type="submit" >Submit</button>
                     </form>
                 @endforeach
             @endforeach

@@ -6,10 +6,15 @@
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12">
                     <div class="listings-grid">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                         <div class="row">
                             <div class="col-md-3 col-lg-3">
                                 <div class="btn btn"
-                                     style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;">
+                                     style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px; ">
                                     <strong>
                                         <i class="fa fa-arrow-down"></i>
                                         Send
@@ -19,7 +24,7 @@
                                     </strong>
                                 </div>
                                 <div class="listings-grid_item">
-                                    <div class="group" id="list-group-1" style="height: 400px; overflow: auto;">
+                                    <div class="group" id="list-group-1" style="height: 200px; overflow: auto;"  >
                                         @foreach($funds as $fund)
                                             <a href="javascript:void(0);" onclick="switchVisible({{ $fund->id }});"
                                                class="list-group-item">
@@ -59,7 +64,7 @@
                                          style="text-align: center; background: #3949AB; font-size: 16px; color: white; width: 100%; height:40px;">
                                         <strong>Receive</strong>
                                     </div>
-                                    <div class="" id="array" style="{{--height: 200px; overflow: auto;--}}">
+                                    <div class="some" id="array" style="height: 200px; overflow: auto;">
                                         @php $receives = \App\Fund::whereIn('id', $receive)->get(); @endphp
                                         @foreach($receives as $r)
                                             <a href="{{ URL('/order', [$fund_id,$r->id])}}" class="list-group-item" >
@@ -84,7 +89,7 @@
                                 </div>
 
                                 <div class="listings-grid__item"
-                                     style="background: white;">
+                                     style="background: white;  height: 200px; overflow: auto;">
                                     @foreach($funds as $fund)
                                         <br>
                                         <div class="col-md-12" style="margin-bottom:8px;">
@@ -194,7 +199,7 @@
                 <div class="col-6">
                     <div class="about-content text-center">
                         <h2>
-                            Exchange Status
+                            Status
                         </h2>
                     </div>
                     <div class="row">
@@ -202,7 +207,9 @@
                             <!-- small box -->
                             <div class="small-box bg-info" style="height: 165px; width: 130px;">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <h3>
+                                        {{ $orders->count() }}
+                                    </h3>
 
                                     <h5>Exchange Completed Today</h5>
                                 </div>
@@ -216,8 +223,9 @@
                             <!-- small box -->
                             <div class="small-box bg-success" style="height: 165px; width: 130px;">
                                 <div class="inner">
-                                    <h3>53</h3>
-
+                                    <h3>
+                                        {{$users->count('review')}}
+                                    </h3>
                                     <h5>Total Feedback</h5>
                                 </div>
                                 <div class="icon">
@@ -230,9 +238,9 @@
                             <!-- small box -->
                             <div class="small-box bg-warning" style="height: 165px; width: 130px;">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ $users->count() }}</h3>
 
-                                    <h5>New Members</h5>
+                                    <h5>Total Members</h5>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
@@ -244,8 +252,7 @@
                             <!-- small box -->
                             <div class="small-box bg-danger" style="height: 165px; width: 130px;">
                                 <div class="inner">
-                                    <h3>65</h3>
-
+                                    <h3>{{$total = \App\Order::sum('status_id')}}</h3>
                                     <h5>Total Exchange</h5>
                                 </div>
                                 <div class="icon">
@@ -276,87 +283,64 @@
                                 <h4>
                                     <div style="text-align: center;">
                                         <img src="img/sign/right.png"
-                                             style="width: 30px; height: 30px; padding-left: 5px;">Completed Exchanges
+                                             style="width: 30px; height: 30px; padding-left: 5px;">
+                                        Completed Exchanges
                                     </div>
                                 </h4>
                                 <div class="row">
                                     <div class="col-md-12 table-responsive">
                                         <div
-                                            style="border: 4px solid #00a651; height: 600px; overflow: scroll; background: white;">
+                                            style="border: 4px solid #00a651; height: 600px; overflow: auto; background: white;">
                                             <table class="table" style="border: 0;">
                                                 <thead>
                                                 <tr>
                                                     <th colspan="2">
-                                                            <span style="color: #3949ab">Username
+                                                            <span style="color: #3949ab">
+                                                                Username
                                                             </span>
                                                     </th>
                                                     <th colspan="2">
                                                         <span style="color: #3949ab">Send</span>
                                                     </th>
                                                     <th colspan="2">
-                                                            <span style="color: #3949ab">Receive
+                                                            <span style="color: #3949ab">
+                                                                Receive
                                                             </span>
                                                     </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
+                                                @foreach($orders as $order)
+                                                    @if($order->status_id == 2)
+                                                    <tr>
                                                     <td>
-                                                            <span style="color: #100613">
-                                                                ismaillk3700
-                                                            </span>
+                                                        <span style="color: #100613">
+                                                            {{$order->user->name}}
+                                                        </span>
                                                     </td>
                                                     <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
+                                                        @foreach($funds as $fund)
+                                                            @if($order->user_send_fund_id == $fund->id)
+                                                        <img src="{{$fund->image_url}}" style="width: 50px; " alt="">
+                                                            @endif
+                                                            @endforeach
                                                     </td>
                                                     <td>
-                                                        2000.0
+                                                        {{$order->user_send_fund_amount}}
                                                     </td>
                                                     <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
+                                                        @foreach($funds as $fund)
+                                                            @if($order->user_receive_fund_id == $fund->id)
+                                                                <img src="{{$fund->image_url}}" style="width: 50px; " alt="">
+                                                            @endif
+                                                        @endforeach
                                                     </td>
                                                     <td>
-                                                        20.619
+                                                        {{$order->user_receive_fund_amount}}
                                                     </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                            <span style="color: #100613">
-                                                                Touhid076
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        1,100.000 <sub>(Bkash Agent (Cash out))</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        11.340 <sub>(Skrill(instant))</sub>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                            <span style="color: #100613">
-                                                                Bigbashnurul1
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        1,400.000 <sub>(Bkash Agent (Cash out))</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        14.433 <sub>(Skrill(instant))</sub>
-                                                    </td>
-                                                </tr>
+                                                    </tr>
+                                                    @endif
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -375,7 +359,7 @@
                                 </h4>
                                 <div class="row">
                                     <div class="col-md-12 table-responsive">
-                                        <div style="border: 4px solid #00a651; height: 240px; overflow: scroll;">
+                                        <div style="border: 4px solid #00a651; height: 240px; overflow: auto;">
                                             <table class="table">
                                                 <thead>
                                                 <tr>
@@ -391,63 +375,37 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>
-                                                            <span style="color: #100613">
-                                                                arkosarker
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        460.000 <sub>(Bkash Agent (Cash out))</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        5.000 <sub>(Perfect Money)</sub>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                            <span style="color: #100613">
-                                                                delwar
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        3,200.000 <sub>(Bkash Agent (Cash out))</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        32.990 <sub>(Skrill(instant))</sub>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                            <span style="color: #100613">
-                                                                Badhon007
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        9,747.000 <sub>(Bkash Agent (Cash out))</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        100.485 <sub>(Neteller (instant))</sub>
-                                                    </td>
-                                                </tr>
+                                                @foreach($orders as $order)
+                                                    @if($order->status_id == 1)
+                                                        <tr>
+                                                            <td>
+                                                        <span style="color: #100613">
+                                                            {{$order->user->name}}
+                                                        </span>
+                                                            </td>
+                                                            <td>
+                                                                @foreach($funds as $fund)
+                                                                    @if($order->user_send_fund_id == $fund->id)
+                                                                        <img src="{{$fund->image_url}}" style="width: 50px; " alt="">
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                {{$order->user_send_fund_amount}}
+                                                            </td>
+                                                            <td>
+                                                                @foreach($funds as $fund)
+                                                                    @if($order->user_receive_fund_id == $fund->id)
+                                                                        <img src="{{$fund->image_url}}" style="width: 50px; " alt="">
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                {{$order->user_receive_fund_amount}}
+                                                            </td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -457,15 +415,15 @@
                             </div>
                             <div class="section featureds" style="background: white;">
                                 <h4>
-                                    <center>
-                                        <img src="img/sign/cross.png"
+                                    <div style="text-align: center;">
+                                        <img src="{{asset('img/sign/cross.png')}}"
                                              style="width: 30px; height: 30px; padding-left: 5px;">
                                         Canceled Orders
-                                    </center>
+                                    </div>
                                 </h4>
                                 <div class="row">
                                     <div class="col-md-12 table-responsive">
-                                        <div style="border: 4px solid #00a651; height: 240px; overflow: scroll;">
+                                        <div style="border: 4px solid #00a651; height: 240px; overflow: auto;">
                                             <table class="table" style="border: 0;">
                                                 <thead>
                                                 <tr>
@@ -487,62 +445,37 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>
-                                                            <span style="color: #100613">
-                                                                TanvirRTurash
-                                                            </span></td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        500.000 <sub>(DBBL Bank / Rocket to Bank)</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        5.435<sub>(Perfect Money)</sub>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                                <span style="color: #100613">
-                                                                    Mmahfuzm
-                                                                </span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        460.000 <sub>(Bkash Agent (Cash out))</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        5.000 <sub>(Perfect Money)</sub>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                                <span style="color: #100613">
-                                                                    Mmahfuzm
-                                                                </span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/sign/bkash.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        460.000 <sub>(Bkash Payment(marchent))</sub>
-                                                    </td>
-                                                    <td>
-                                                        <img src="img/icon/skrill.png" style="width: 50px; ">
-                                                    </td>
-                                                    <td>
-                                                        5.000 <sub>(Perfect Money)</sub>
-                                                    </td>
-                                                </tr>
+                                                @foreach($orders as $order)
+                                                    @if($order->status_id == 3)
+                                                        <tr>
+                                                            <td>
+                                                        <span style="color: #100613">
+                                                            {{$order->user->name}}
+                                                        </span>
+                                                            </td>
+                                                            <td>
+                                                                @foreach($funds as $fund)
+                                                                    @if($order->user_send_fund_id == $fund->id)
+                                                                        <img src="{{$fund->image_url}}" style="width: 50px; " alt="">
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                {{$order->user_send_fund_amount}}
+                                                            </td>
+                                                            <td>
+                                                                @foreach($funds as $fund)
+                                                                    @if($order->user_receive_fund_id == $fund->id)
+                                                                        <img src="{{$fund->image_url}}" style="width: 50px; " alt="">
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                {{$order->user_receive_fund_amount}}
+                                                            </td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

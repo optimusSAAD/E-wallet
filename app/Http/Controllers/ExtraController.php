@@ -16,6 +16,7 @@ class ExtraController extends Controller
     {
         $extras = Extra::all();
         return view('backend.themeLogo.index',compact('extras'));
+
     }
 
     /**

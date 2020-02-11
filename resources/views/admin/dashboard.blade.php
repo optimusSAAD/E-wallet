@@ -45,6 +45,13 @@
                             </div>
                         </div>
                     </div>
+                        <a class="navbar-brand" href="{{ url('/admin/order') }}">
+                            <b>Dashboard</b>
+                        </a>
+                        <br>
+                        <a class="navbar-brand" href="{{ url('/track') }}">
+                            <b>Your Order History</b>
+                        </a>
                 </div>
             </div>
         </div>
